@@ -50,7 +50,7 @@ function Card({ product }) {
                             <Link href="/points">
 
                                 <MoreCoinButton>
-                                    You need more coins
+                                    You need {product.cost} coins
                             </MoreCoinButton>
                             </Link>
                             :

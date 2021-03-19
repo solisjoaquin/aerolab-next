@@ -1,6 +1,48 @@
 import styled from 'styled-components'
+import useAppContext from '../../context/context'
 
 function TagContainer() {
+    const { variableState, setVariableState } = useAppContext()
+
+    const handleRecentButton = () => {
+        const mostRecent = variableState.products.sort(function (a, b) {
+            if (a._id > b._id) {
+                return 1;
+            }
+            if (a._id < b._id) {
+                return -1;
+            }
+            return 0;
+        });
+        setVariableState({ ...variableState, products: [...mostRecent] });
+    }
+
+    const handleLowButton = () => {
+        const lowestPriceOrder = variableState.products.sort(function (a, b) {
+            if (a.cost > b.cost) {
+                return 1;
+            }
+            if (a.cost < b.cost) {
+                return -1;
+            }
+            return 0;
+        });
+        setVariableState({ ...variableState, products: [...lowestPriceOrder] });
+    }
+
+    const handleHighButton = () => {
+        const highPriceOrder = variableState.products.sort(function (a, b) {
+            if (a.cost < b.cost) {
+                return 1;
+            }
+            if (a.cost > b.cost) {
+                return -1;
+            }
+            return 0;
+        });
+
+        setVariableState({ ...variableState, products: [...highPriceOrder] });
+    }
 
     return (
         <Container>
@@ -8,9 +50,9 @@ function TagContainer() {
                 Sort by
             </p>
             <div>
-                <Button >Most recent </Button>
-                <Button >Highest price </Button>
-                <Button >Lowest price </Button>
+                <Button onClick={() => handleRecentButton()} >Most recent </Button>
+                <Button onClick={() => handleHighButton()}>Highest price </Button>
+                <Button onClick={() => handleLowButton()}>Lowest price </Button>
             </div>
 
 
