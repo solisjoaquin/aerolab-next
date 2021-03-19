@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Card from './Card'
 import Pagination from '../products/Pagination'
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, amount }) {
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(12)
+    const [postPerPage, setPostPerPage] = useState(amount)
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -14,18 +14,18 @@ function ProductGrid({ products }) {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <Container>
+        <div>
 
-
-            {currentPosts.map(product =>
-                <Card product={product} />
-            )}
-
+            <Container>
+                {currentPosts.map(product =>
+                    <Card product={product} />
+                )}
+            </Container>
             <Pagination
                 postPerPage={postPerPage}
                 totalPost={products.length}
                 paginate={paginate} />
-        </Container>
+        </div>
     )
 }
 

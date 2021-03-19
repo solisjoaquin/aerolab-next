@@ -18,40 +18,12 @@ function HomePage({ products, user, history }) {
 
   if (!variableState.products || !variableState.user) return <></>
 
-  // Sort products (not implemented yet)
-
-  /*
-  let recentProducts = variableState.history.sort(function (a, b) {
-    return new Date(b.createDate) - new Date(a.createDate);
-  });
-
-
-  let ascendingArray = products.sort(function (a, b) {
-      if (a.cost > b.cost) {
-          return 1;
-      }
-      if (a.cost < b.cost) {
-          return -1;
-      }
-      return 0;
-  });
-  
-  let descendingArray = products.sort(function (a, b) {
-      if (a.cost < b.cost) {
-          return 1;
-      }
-      if (a.cost > b.cost) {
-          return -1;
-      }
-      return 0;
-  }); */
-
 
   return <>
     <Navbar />
     <Container >
       <TagContainer />
-      <ProductGrid products={variableState.products} />
+      <ProductGrid products={variableState.products} amount={12} />
     </Container>
 
   </>

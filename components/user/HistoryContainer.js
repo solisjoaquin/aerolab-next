@@ -5,7 +5,7 @@ import Pagination from '../products/Pagination'
 function HistoryContainer({ history }) {
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(9)
+    const [postPerPage, setPostPerPage] = useState(12)
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
