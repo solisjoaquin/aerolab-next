@@ -22,19 +22,18 @@ function HistoryContainer({ history }) {
             </div>
             <Grid>
                 {currentPosts.map(product => (
-                    <ProductHistoryCard><div>
-                        <div>
-                            <p>{product.name}</p>
+                    <ProductHistoryCard>
 
+                        <p>{product.name}</p>
+
+                        <div className="secondary-text">
+                            Points: {product.cost}
                         </div>
-                        <div>
-                            {product.cost}
-                        </div>
-                        <div>
-                            {product.category}
+                        <div className="secondary-text">
+                            Category: {product.category}
                         </div>
 
-                    </div></ProductHistoryCard>
+                    </ProductHistoryCard>
                 ))}
             </Grid>
 
@@ -95,16 +94,24 @@ max-width: 64rem;
 `
 
 const ProductHistoryCard = styled.div`
-    margin: 10px 15px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 10px 10px;
     padding: 25px 25px;
-    width: 250px;
-    height:120px;
+    width: 220px;
+
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
+    
     :hover {
         transform: translateY(-5px);
 
     }
     
+    .secondary-text {
+        font-size: 0.9rem;
+        opacity: 0.5;
+    }
 `

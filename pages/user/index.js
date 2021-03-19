@@ -66,7 +66,7 @@ function User({ products, user, history }) {
 
       <Container >
         <Stats>
-          <p>Most redeemed category: {sortCategories[0].category} ({sortCategories[0].amount})</p>
+          <p class="secondary-text">Most redeemed category: {sortCategories[0].category} ({sortCategories[0].amount})</p>
         </Stats>
         <h2 className="title">Maybe you like</h2>
         <RecommendationContainer>
@@ -115,6 +115,11 @@ const ContainerColumn = styled.div`
 const Stats = styled.div`
   font-size: 1.25rem;
   text-align: center;
+
+  .secondary-text {
+    font-size:0.9rem;
+    opacity: 0.8;
+  }
 `
 const RecommendationContainer = styled.div`
 display:flex;
