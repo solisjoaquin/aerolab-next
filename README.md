@@ -1,5 +1,7 @@
 # Aerolab Challenge
 
+![screenshoot](https://raw.githubusercontent.com/solisjoaquin/aerolab-next/main/capture/aerolab.PNG)
+
 ## Tecnologias usadas
 
 * React
