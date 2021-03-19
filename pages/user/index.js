@@ -45,9 +45,10 @@ function User({ products, user, history }) {
   let sortCategories = categories.sort(function (a, b) {
     return (a.amount - b.amount) * -1
   })
-  let categoryMostRedeemed = sortCategories[0].category
+  let categoryMostRedeemed = sortCategories[0].category;
+  let secondCategory = sortCategories[1].category;
 
-  let filterProducts = products.filter(product => product.category == categoryMostRedeemed)
+  let filterProducts = products.filter(product => (product.category == categoryMostRedeemed || product.category == secondCategory))
 
 
 
@@ -65,8 +66,11 @@ function User({ products, user, history }) {
       <Navbar />
 
       <Container >
+
         <Stats>
-          <p class="secondary-text">Most redeemed category: {sortCategories[0].category} ({sortCategories[0].amount})</p>
+          <p >Most redeemed category: {sortCategories[0].category} ({sortCategories[0].amount})</p>
+          <p class="secondary-text">Second redeemed category: {sortCategories[1].category} ({sortCategories[1].amount})</p>
+
         </Stats>
         <h2 className="title">Maybe you like</h2>
         <RecommendationContainer>
@@ -77,6 +81,7 @@ function User({ products, user, history }) {
         <ContainerColumn >
           <HistoryContainer history={history} />
         </ContainerColumn>
+
       </Container>
 
     </div>
@@ -115,7 +120,6 @@ const ContainerColumn = styled.div`
 const Stats = styled.div`
   font-size: 1.25rem;
   text-align: center;
-
   .secondary-text {
     font-size:0.9rem;
     opacity: 0.8;

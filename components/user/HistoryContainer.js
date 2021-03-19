@@ -14,12 +14,7 @@ function HistoryContainer({ history }) {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     return (
         <Container>
-            <div>
-                <Pagination
-                    postPerPage={postPerPage}
-                    totalPost={history.length}
-                    paginate={paginate} />
-            </div>
+
             <Grid>
                 {currentPosts.map(product => (
                     <ProductHistoryCard>
@@ -36,6 +31,12 @@ function HistoryContainer({ history }) {
                     </ProductHistoryCard>
                 ))}
             </Grid>
+            <div>
+                <Pagination
+                    postPerPage={postPerPage}
+                    totalPost={history.length}
+                    paginate={paginate} />
+            </div>
 
         </Container>
     )
