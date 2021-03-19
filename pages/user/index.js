@@ -68,9 +68,10 @@ function User({ products, user, history }) {
       <Container >
 
         <Stats>
-          <p >Most redeemed category: {sortCategories[0].category} ({sortCategories[0].amount})</p>
-          <p class="secondary-text">Second redeemed category: {sortCategories[1].category} ({sortCategories[1].amount})</p>
-
+          <h2 className="title">&#x1F3C6; Your TOP categories &#x1F3C6;</h2>
+          <p >1 ) {sortCategories[0].category} ({sortCategories[0].amount} products)</p>
+          <p class="secondary-text">2) {sortCategories[1].category} ({sortCategories[1].amount} products)</p>
+          <p class="secondary-text">3) {sortCategories[2].category} ({sortCategories[2].amount} products)</p>
         </Stats>
         <h2 className="title">Maybe you like</h2>
         <RecommendationContainer>
@@ -121,7 +122,7 @@ const Stats = styled.div`
   font-size: 1.25rem;
   text-align: center;
   .secondary-text {
-    font-size:0.9rem;
+    font-size:1rem;
     opacity: 0.8;
   }
 `
