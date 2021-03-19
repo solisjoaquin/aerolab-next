@@ -17,7 +17,7 @@ function User({ products, user, history }) {
   }, [variableState]);
 
 
-  if (!variableState.products || !variableState.user) return <>Loading...</>
+  if (!variableState.products || !variableState.user) return <></>
 
   return (
     <div>

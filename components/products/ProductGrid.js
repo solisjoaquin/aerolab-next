@@ -16,6 +16,7 @@ function ProductGrid({ products }) {
     return (
         <Container>
 
+
             {currentPosts.map(product =>
                 <Card product={product} />
             )}
@@ -35,8 +36,6 @@ const Container = styled.div`
     -webkit-flex-wrap: wrap; 
     justify-content:center; 
   flex-wrap: wrap;
-  max-width: 80rem;
-    
-    
-    
+  max-width: 80rem;    
 `
+

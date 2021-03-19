@@ -37,5 +37,9 @@ font-size:1rem;
     color: #cdf6fd;
     background-color: #0ad4fa;
 }
+:active {
+    color: #cdf6fd;
+    background-color: #0ad4fa;
+}
 `
 

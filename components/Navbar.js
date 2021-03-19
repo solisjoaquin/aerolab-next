@@ -7,7 +7,7 @@ import Link from 'next/link'
 function Header() {
     const { variableState } = useAppContext()
     const { user } = variableState
-    if (!user) return <></>
+
     return <HeaderContainer>
         <Link href="/">
             <LogoStyle src="/icons/aerolab-logo.svg" alt="logo" width={36} height={36} />

@@ -1,16 +1,19 @@
 import styled from 'styled-components'
 
 function TagContainer() {
+
     return (
         <Container>
             <p>
                 Sort by
             </p>
             <div>
-                <Button>Most recent </Button>
+                <Button >Most recent </Button>
                 <Button >Highest price </Button>
                 <Button >Lowest price </Button>
             </div>
+
+
         </Container>
     )
 }
@@ -63,6 +66,9 @@ font-size:1rem;
 :hover {
     color: #cdf6fd;
     background-color: #0ad4fa;
+}
+:focus{
+    outline: none;
 }
 @media ${device.tablet} {
     padding: 10px 25px;

@@ -5,7 +5,7 @@ import Pagination from '../products/Pagination'
 function HistoryContainer({ history }) {
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(6)
+    const [postPerPage, setPostPerPage] = useState(9)
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -14,6 +14,12 @@ function HistoryContainer({ history }) {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     return (
         <Container>
+            <div>
+                <Pagination
+                    postPerPage={postPerPage}
+                    totalPost={history.length}
+                    paginate={paginate} />
+            </div>
             <Grid>
                 {currentPosts.map(product => (
                     <ProductHistoryCard><div>
@@ -31,12 +37,7 @@ function HistoryContainer({ history }) {
                     </div></ProductHistoryCard>
                 ))}
             </Grid>
-            <div>
-                <Pagination
-                    postPerPage={postPerPage}
-                    totalPost={history.length}
-                    paginate={paginate} />
-            </div>
+
         </Container>
     )
 }
@@ -70,7 +71,7 @@ export const device = {
 const Container = styled.div`
     display:flex;
     flex-direction:column;
-    
+    padding-bottom: 20px;
 `
 const Grid = styled.div`
 display:flex;
@@ -88,7 +89,6 @@ max-width: 64rem;
     flex-direction: row;
     -webkit-flex-wrap: wrap; 
     justify-content:center;
-    height: 400px; 
     flex-wrap: wrap;
   }
 
@@ -102,5 +102,9 @@ const ProductHistoryCard = styled.div`
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
+    :hover {
+        transform: translateY(-5px);
+
+    }
     
 `

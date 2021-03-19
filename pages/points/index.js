@@ -87,5 +87,8 @@ font-size:1.25rem;
     border-radius: 9999px;
     background-color: #0ad4fa;
 }
+:focus{
+    outline: none;
+}
 `
 

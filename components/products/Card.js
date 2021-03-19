@@ -9,44 +9,62 @@ function Card({ product }) {
     const { variableState, setVariableState } = useAppContext();
     const { user } = variableState;
     const [redeem, setRedeem] = useState(false);
+    const [displayMessage, setDisplayMessage] = useState(false)
 
     async function handleRedeemProduct(productId) {
         const user = await redeemItem(productId);
         setVariableState({ ...variableState, user });
+        setDisplayMessage(true)
         setRedeem(true);
         setTimeout(function () {
             setRedeem(false);
+            setDisplayMessage(false)
         }, 5000);
     }
 
     return (
-        <Container>
-            <ProductCard>
-                <div>
-                    <img width={252} height={182} src={product.img.url} alt={product.name} />
-                </div>
-                <div>
-                    <ProductCategory>{product.category}</ProductCategory>
-                    <ProductName>{product.name}</ProductName>
-                </div>
-            </ProductCard>
+        <>
 
-            <Overlay>
+            <Container>
+                <ProductCard>
 
-                <h2>{product.cost}</h2>
-                <div>
-                    {product.cost > user.points ?
-                        <Link href="/points">
+                    <div>
+                        <img width={252} height={182} src={product.img.url} alt={product.name} />
+                    </div>
+                    <div>
+                        {displayMessage === true ? <ProductName>Redeemed product!!</ProductName> :
+                            <>
+                                <ProductCategory>{product.category}</ProductCategory>
+                                <ProductName>{product.name}</ProductName>
+                            </>
+                        }
+                    </div>
+                </ProductCard>
 
-                            <MoreCoinButton>
-                                You need more coins
+                <Overlay>
+
+
+                    <h2>{product.cost}</h2>
+                    <div>
+                        {product.cost > user.points ?
+                            <Link href="/points">
+
+                                <MoreCoinButton>
+                                    You need more coins
                             </MoreCoinButton>
-                        </Link> :
-                        <ProductButton onClick={() => handleRedeemProduct(product._id)}>Redeem now</ProductButton>
-                    }
-                </div>
-            </Overlay>
-        </Container>
+                            </Link>
+                            :
+                            <>
+                                <ProductButton onClick={() => handleRedeemProduct(product._id)}>
+                                    Redeem now
+                        </ProductButton>
+                            </>
+                        }
+                    </div>
+
+                </Overlay>
+            </Container>
+        </>
     )
 }
 
@@ -92,6 +110,27 @@ const Overlay = styled.div`
     :hover {
         opacity:1;
         z-index:2
+    }
+}
+`
+const Message = styled.div`
+    display: flex;
+    width:100%;
+    height:100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    opacity: 1;
+    top: 0%;
+    left: 0%;
+    background: rgba(37, 187, 241, 0.8);
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 2;
+    :hover {
+        opacity:1;
+        z-index:5
     }
 }
 `
