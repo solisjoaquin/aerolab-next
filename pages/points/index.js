@@ -2,14 +2,25 @@ import Navbar from '../../components/Navbar'
 import styled from 'styled-components'
 import { addPoints } from '../../data/api';
 import useAppContext from "../../context/context";
+import { getHistory, getProducts, getUser } from '../../data/api'
+import { useEffect } from 'react'
 
-function Points() {
+function Points({ products, user }) {
     const { variableState, setVariableState } = useAppContext()
 
     async function handleAddPoints(amount) {
         const user = await addPoints(amount);
         setVariableState({ ...variableState, user });
     }
+
+    useEffect(() => {
+        if (!variableState.products || !variableState.user) {
+            setVariableState({ ...variableState, products, user });
+        }
+    }, []);
+
+
+    if (!variableState.products || !variableState.user) return <></>
 
     return (
         <div>
@@ -26,6 +37,16 @@ function Points() {
 
         </div>
     )
+}
+
+export async function getServerSideProps() {
+    return {
+        props: {
+            products: await getProducts(),
+            user: await getUser(),
+            history: await getHistory(),
+        },
+    };
 }
 
 export default Points;
