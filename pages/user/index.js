@@ -68,7 +68,7 @@ function User({ products, user, history }) {
       <Container >
 
         <Stats>
-          <h2 className="title">&#x1F3C6; Your TOP categories &#x1F3C6;</h2>
+          <h2 className="title">Your TOP categories &#x1F3C6;</h2>
           <p >1 ) {sortCategories[0].category} ({sortCategories[0].amount} products)</p>
           <p class="secondary-text">2) {sortCategories[1].category} ({sortCategories[1].amount} products)</p>
           <p class="secondary-text">3) {sortCategories[2].category} ({sortCategories[2].amount} products)</p>
