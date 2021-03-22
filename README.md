@@ -1,6 +1,6 @@
 # Aerolab Challenge
 
-![screenshoot](https://raw.githubusercontent.com/solisjoaquin/aerolab-next/main/capture/aerolab.PNG)
+![screenshoot](https://raw.githubusercontent.com/solisjoaquin/solisjoaquin/master/aerolab-challenge-screenshot.PNG)
 
 ## Demo
 
