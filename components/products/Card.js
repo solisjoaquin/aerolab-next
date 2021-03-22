@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { redeemItem } from '../../data/api';
 import useAppContext from '../../context/context';
 import Link from 'next/link';
+import Image from 'next/image'
 
 function Card({ product }) {
 
@@ -36,12 +37,15 @@ function Card({ product }) {
                             <>
                                 <ProductCategory>{product.category}</ProductCategory>
                                 <ProductName>{product.name}</ProductName>
+                                <ProductButton onClick={() => handleRedeemProduct(product._id)}>
+                                    <p>Redeem now</p> <div className="cost-coin"><p>{product.cost}</p><Image src="/icons/coin.svg" alt="logo" width={30} height={30} /></div>
+                                </ProductButton>
                             </>
                         }
                     </div>
                 </ProductCard>
 
-                <div className="overlay">
+                {/*                 <div className="overlay">
 
 
                     <h2 className="overlay-cost">{product.cost}</h2>
@@ -57,12 +61,12 @@ function Card({ product }) {
                             <>
                                 <ProductButton onClick={() => handleRedeemProduct(product._id)}>
                                     Redeem now
-                        </ProductButton>
+                                </ProductButton>
                             </>
                         }
                     </div>
 
-                </div>
+                </div> */}
             </Container>
         </>
     )
@@ -76,7 +80,10 @@ const Container = styled.div`
     margin: 10px;
     padding:15px;
     box-shadow: 3px 3px 5px -4px gray;
-
+    border-radius:10px;
+    :hover {
+        box-shadow: 5px 5px 5px 3px #bdbdbd;
+    }
     .overlay {
         display: flex;
         width:100%;
@@ -97,6 +104,8 @@ const Container = styled.div`
             z-index:2;
             box-shadow: 5px 5px 5px 3px #bdbdbd;
             transform: translateY(-5px);
+            
+        
         }
         .overlay-cost {
             color:white;
@@ -115,8 +124,6 @@ const ProductCard = styled.div`
     border-radius: 5px; 
     :hover {
         color:white;
-        transform: translateY(-5px);
-        opacity:0.3;
         z-index:0;
     }
     
@@ -166,31 +173,42 @@ const Message = styled.div`
 `
 
 const ProductName = styled.p`
-    color: #979797;
-    font-size: 1.25rem; 
+    margin: 10px 0;
+    color: black;
+    font-size: 1.2rem; 
 `
 
 const ProductCategory = styled.p`
+    margin: 5px 0;
     color: #979797;
-    font-size: 1rem;
     border-top: 1px solid  #bdbdbd;
     padding-top: 10px
 `
 
 const ProductButton = styled.button`
-    margin: 0 10px;
-    padding: 15px 35px;
-    border-radius: 9999px;
-    background-color:white;
+    display:flex;
+    justify-content:space-between;
+    padding: 0 15px;
+    border-radius: 10px;
+    background-color:#0ad4fa;
+    width:100%;
+    align-text:center;
     border: none;
-    font-size:1.25rem;
-    color: #616161;
+    font-size:1rem;
+    color: white;
     :hover {
-        border-radius: 9999px;
-        background-color: white;
+        background-color: #0ad4fa;
+        opacity: 0.8;
         cursor:pointer;
         transform: translateY(-2px);
-}
+    }
+    .cost-coin {
+        display:flex;
+        align-items: top;
+    }
+    p {
+        padding-right:5px;
+    }
 `
 
 const MoreCoinButton = styled.button`
