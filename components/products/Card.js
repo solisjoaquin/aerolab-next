@@ -91,6 +91,7 @@ const ProductCard = styled.div`
     backface-visibility: hidden;
     color: #bdbdbd;
     border-radius: 5px; 
+    
 `
 const Overlay = styled.div`
     display: flex;

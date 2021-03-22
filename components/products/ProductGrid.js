@@ -11,21 +11,24 @@ function ProductGrid({ products, amount }) {
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost)
 
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div>
+        <Container>
 
-            <Container>
+            <div className="cardsContainer">
                 {currentPosts.map(product =>
                     <Card product={product} />
                 )}
-            </Container>
+            </div >
+
             <Pagination
+                currentPage={currentPage}
                 postPerPage={postPerPage}
                 totalPost={products.length}
                 paginate={paginate} />
-        </div>
+        </Container>
     )
 }
 
@@ -36,6 +39,14 @@ const Container = styled.div`
     -webkit-flex-wrap: wrap; 
     justify-content:center; 
   flex-wrap: wrap;
-  max-width: 80rem;    
+  max-width: 80rem; 
+  flex-direction:column;
+  .cardsContainer{
+    display:flex;
+    -webkit-flex-wrap: wrap; 
+    justify-content:center; 
+  flex-wrap: wrap;
+  max-width: 80rem; 
+  }   
 `
 

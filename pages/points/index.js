@@ -5,7 +5,12 @@ import useAppContext from "../../context/context";
 import { getHistory, getProducts, getUser } from '../../data/api'
 import { useEffect } from 'react'
 
-function Points({ products, user }) {
+function Points({ products, user, history }) {
+
+    console.log(history.reduce(function (total, currentValue, currentIndex, arr) {
+        return currentValue.cost + total
+    }, 0))
+
     const { variableState, setVariableState } = useAppContext()
 
     async function handleAddPoints(amount) {
@@ -79,7 +84,6 @@ const Container = styled.div`
     text-align:center;
     background-color: #f9f9f9;
     padding: 25px;
-    height: 100vh;
     
 `
 
@@ -112,4 +116,3 @@ font-size:1.25rem;
     outline: none;
 }
 `
-

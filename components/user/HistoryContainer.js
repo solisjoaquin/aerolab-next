@@ -31,12 +31,12 @@ function HistoryContainer({ history }) {
                     </ProductHistoryCard>
                 ))}
             </Grid>
-            <div>
+            {/*             <div>
                 <Pagination
                     postPerPage={postPerPage}
                     totalPost={history.length}
                     paginate={paginate} />
-            </div>
+            </div> */}
 
         </Container>
     )

@@ -21,11 +21,12 @@ function HomePage({ products, user, history }) {
 
   return <>
     <Navbar />
-    <Container >
+    <Container>
       <TagContainer />
-      <ProductGrid products={variableState.products} amount={12} />
+      <div class="productContainer">
+        <ProductGrid products={variableState.products} amount={12} />
+      </div>
     </Container>
-
   </>
 }
 
@@ -43,8 +44,11 @@ export async function getServerSideProps() {
 
 const Container = styled.div`
     display:flex;
-    flex-direction: column;
-    background-color: #f9f9f9;
-    padding: 25px;
-    margin: auto;
+    flex-direction:column;
+    .productContainer {
+      display:flex;
+      justify-content:center;
+      background-color: #f9f9f9;
+      padding: 25px;
+    }
 `

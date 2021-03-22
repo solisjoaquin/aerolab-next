@@ -88,12 +88,14 @@ const Container = styled.div`
     display:flex;
     text-align:center;
     align-items:center;
+    
     flex-direction:column;
     padding:10px 20px;
     font-size: 1rem;
     @media ${device.tablet} {
         font-size: 1.25rem;
         flex-direction:row;
+        justify-content:center;
       }
 `
 

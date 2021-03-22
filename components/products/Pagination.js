@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 
-function Pagination({ postPerPage, totalPost, paginate }) {
+function Pagination({ postPerPage, totalPost, paginate, currentPage }) {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalPost / postPerPage); i++) {
         pageNumbers.push(i)
     }
-
+    const handleLastPage = (e) => {
+        e.preventDefault();
+        let lastPage = currentPage - 1;
+        console.log(lastPage)
+        return paginate(pageNumbers[lastPage])
+    }
     return (
         <Container>
             {pageNumbers.map(number => (
@@ -14,6 +19,8 @@ function Pagination({ postPerPage, totalPost, paginate }) {
                     {number}
                 </Button>
             ))}
+
+
 
         </Container>
     )
@@ -24,6 +31,12 @@ export default Pagination;
 const Container = styled.nav`
     display:flex;
     justify-content:center;
+
+    .page{
+        margin: 10px;
+        padding: 20px;
+    }
+
 `
 const Button = styled.button`
 color: #a3a3a3;
@@ -42,4 +55,3 @@ font-size:1rem;
     background-color: #0ad4fa;
 }
 `
-
