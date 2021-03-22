@@ -45,6 +45,7 @@ export async function getServerSideProps() {
 const Container = styled.div`
     display:flex;
     flex-direction:column;
+    background-color: #f9f9f9;
     .productContainer {
       display:flex;
       justify-content:center;

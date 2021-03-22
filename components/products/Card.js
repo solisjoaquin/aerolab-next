@@ -41,10 +41,10 @@ function Card({ product }) {
                     </div>
                 </ProductCard>
 
-                <Overlay>
+                <div className="overlay">
 
 
-                    <h2>{product.cost}</h2>
+                    <h2 className="overlay-cost">{product.cost}</h2>
                     <div>
                         {product.cost > user.points ?
                             <Link href="/points">
@@ -62,7 +62,7 @@ function Card({ product }) {
                         }
                     </div>
 
-                </Overlay>
+                </div>
             </Container>
         </>
     )
@@ -75,13 +75,35 @@ const Container = styled.div`
     background-color: white;
     margin: 10px;
     padding:15px;
-    box-shadow: 3px 3px 5px -6px gray;
-    :hover {
-        color:white;
-        transform: translateY(-5px);
-        opacity:0.3;
-        z-index:0;
+    box-shadow: 3px 3px 5px -4px gray;
+
+    .overlay {
+        display: flex;
+        width:100%;
+        height:100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        opacity: 1;
+        top: 0%;
+        left: 0%;
+        background: rgba(37, 187, 241, 0.8);
+        opacity: 0;
+        transition: 0.5s;
+        z-index: 2;
+        :hover {
+            opacity:1;
+            z-index:2;
+            box-shadow: 5px 5px 5px 3px #bdbdbd;
+            transform: translateY(-5px);
+        }
+        .overlay-cost {
+            color:white;
+            font-size: 2rem;
+        }
     }
+    
 `
 
 const ProductCard = styled.div`
@@ -91,6 +113,12 @@ const ProductCard = styled.div`
     backface-visibility: hidden;
     color: #bdbdbd;
     border-radius: 5px; 
+    :hover {
+        color:white;
+        transform: translateY(-5px);
+        opacity:0.3;
+        z-index:0;
+    }
     
 `
 const Overlay = styled.div`
@@ -101,6 +129,7 @@ const Overlay = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
+    border-radius: 7px;
     opacity: 1;
     top: 0%;
     left: 0%;
@@ -149,19 +178,18 @@ const ProductCategory = styled.p`
 `
 
 const ProductButton = styled.button`
-    color: black;
     margin: 0 10px;
-    padding: 5px 25px;
+    padding: 15px 35px;
     border-radius: 9999px;
     background-color:white;
     border: none;
     font-size:1.25rem;
-
-:hover {
-    color: black;
-    border-radius: 9999px;
-    background-color: white;
-    cursor:pointer;
+    color: #616161;
+    :hover {
+        border-radius: 9999px;
+        background-color: white;
+        cursor:pointer;
+        transform: translateY(-2px);
 }
 `
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 import Pagination from '../products/Pagination'
+import TagContainer from './TagContainer'
 
 function ProductGrid({ products, amount }) {
     const [currentPage, setCurrentPage] = useState(1)
