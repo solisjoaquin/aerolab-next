@@ -5,15 +5,36 @@ import Pagination from '../products/Pagination'
 import TagContainer from './TagContainer'
 
 function ProductGrid({ products, amount }) {
-    const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(amount)
+    /*const [currentPage, setCurrentPage] = useState(1)
+     const [postPerPage, setPostPerPage] = useState(amount)
 
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost)
 
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber); */
+
+    let [currentPage, setCurrentPage] = useState(1)
+
+    let postsPerPage = amount;
+    let indexOfLastPost = postsPerPage * currentPage;
+    let indexOfFirsPost = indexOfLastPost - postsPerPage;
+
+    let currentPosts = products.slice(indexOfFirsPost, indexOfLastPost);
+
+    const handleNextPost = () => {
+        if (indexOfLastPost < products.length) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
+    const handleLastPost = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+
 
     return (
         <Container>
@@ -23,12 +44,16 @@ function ProductGrid({ products, amount }) {
                     <Card product={product} />
                 )}
             </div >
+            <PaginationContainer>
+                {/*                 <div>
+                    {`${indexOfLastPost}/${products.length}`}
+                </div> */}
+                <div className="buttons-div">
+                    <Button onClick={handleLastPost}>{"<"}</Button>
+                    <Button onClick={handleNextPost}>{">"}</Button>
+                </div>
+            </PaginationContainer>
 
-            <Pagination
-                currentPage={currentPage}
-                postPerPage={postPerPage}
-                totalPost={products.length}
-                paginate={paginate} />
         </Container>
     )
 }
@@ -50,4 +75,30 @@ const Container = styled.div`
   max-width: 80rem; 
   }   
 `
-
+const PaginationContainer = styled.div`
+  display: flex; 
+  justify-content: center;
+  color: #a3a3a3;
+  padding: 5px 45px;
+  font-size: 1.25rem;
+  align-items: center;
+  .buttons-div {
+      display:flex;
+  }
+`
+const Button = styled.button`
+color: #a3a3a3;
+margin: 10px;
+padding: 15px 20px;
+border-radius: 99999px;
+border: none;
+font-size:1rem;
+:hover {
+    color: #cdf6fd;
+    background-color: #0ad4fa;
+}
+:active {
+    color: #cdf6fd;
+    background-color: #0ad4fa;
+}
+`

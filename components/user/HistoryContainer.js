@@ -4,14 +4,26 @@ import Pagination from '../products/Pagination'
 
 function HistoryContainer({ history }) {
 
-    const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(12)
+    let [currentPage, setCurrentPage] = useState(1)
 
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = history.slice(indexOfFirstPost, indexOfLastPost)
+    let postsPerPage = 12;
+    let indexOfLastPost = postsPerPage * currentPage;
+    let indexOfFirsPost = indexOfLastPost - postsPerPage;
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    let currentPosts = history.slice(indexOfFirsPost, indexOfLastPost);
+
+    const handleNextPost = () => {
+        if (indexOfLastPost < history.length) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
+    const handleLastPost = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+
     return (
         <Container>
 
@@ -31,12 +43,10 @@ function HistoryContainer({ history }) {
                     </ProductHistoryCard>
                 ))}
             </Grid>
-            {/*             <div>
-                <Pagination
-                    postPerPage={postPerPage}
-                    totalPost={history.length}
-                    paginate={paginate} />
-            </div> */}
+            <ButtonContainer>
+                <Button onClick={handleLastPost}>{"<"}</Button>
+                <Button onClick={handleNextPost}>{">"}</Button>
+            </ButtonContainer>
 
         </Container>
     )
@@ -115,4 +125,25 @@ const ProductHistoryCard = styled.div`
         font-size: 0.9rem;
         opacity: 0.5;
     }
+`
+
+const ButtonContainer = styled.div`
+  display: flex; 
+  justify-content: center;
+`
+const Button = styled.button`
+color: #a3a3a3;
+margin: 10px;
+padding: 15px 20px;
+border-radius: 99999px;
+border: none;
+font-size:1rem;
+:hover {
+    color: #cdf6fd;
+    background-color: #0ad4fa;
+}
+:active {
+    color: #cdf6fd;
+    background-color: #0ad4fa;
+}
 `

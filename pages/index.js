@@ -50,6 +50,5 @@ const Container = styled.div`
       display:flex;
       justify-content:center;
       background-color: #f9f9f9;
-      padding: 25px;
     }
 `
